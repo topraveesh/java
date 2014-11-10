@@ -20,5 +20,4 @@ public class Factorial {
 		return (num*findFactNum(num-1));
 		return 1;
 	}
-		  
 }
