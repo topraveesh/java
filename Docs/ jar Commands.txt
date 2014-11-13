@@ -1,14 +1,24 @@
 Create Jar File: 
 
-    jar cf myjar.jar file1.class file2.class
+        jar cf myjar.jar file1.class file2.class
 
-    jar cf myjar.jar *.*
+        jar cf myjar.jar *.*
     
-    c: create f: file
+        c: create 
+        f: file
 
 
 Extract Jar File:
   
-    jar xf myjar.jar 
+        jar xf myjar.jar 
     
-    x: xtract f: file
+        x: xtract  
+        f: file
+    
+    
+View Contents of a jar File:
+
+        jar tf myjar.jar
+        
+        t: table  
+        f: file
