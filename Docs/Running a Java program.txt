@@ -1,3 +1,7 @@
-java -cp C:\Path\ SampleClassName
 
-java - jar filename.jar
+Running a class file:
+    java -cp C:\Path\ SampleClassName
+
+
+Running a jar file:
+    java - jar filename.jar
