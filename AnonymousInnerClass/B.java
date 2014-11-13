@@ -12,6 +12,6 @@ public class B {
 	
 	public static void main(String[] args) {
 		B b = new B();
-		b.a.read(); 
+		b.a.read(); //This will print "Anonymous read()"
 	}
 }
