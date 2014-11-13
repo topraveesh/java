@@ -1,0 +1,14 @@
+Create Jar File: 
+
+    jar cf myjar.jar file1.class file2.class
+
+    jar cf myjar.jar *.*
+    
+    c: create f: file
+
+
+Extract Jar File:
+  
+    jar xf myjar.jar 
+    
+    x: xtract f: file
