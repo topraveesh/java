@@ -1,3 +1,0 @@
-java -cp C:\Path\ SampleClassName
-
-java - jar filename.jar
