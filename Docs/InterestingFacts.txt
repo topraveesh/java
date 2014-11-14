@@ -1,2 +1,0 @@
-Result of 1/0 : runtime error
-but result of 1.0/0.0 : Infinity
