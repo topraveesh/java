@@ -7,17 +7,14 @@ public class Test2 {
 	public static void main(String[] args) {
 		
 		A a = new B();
-		//B b = a;
-		B b = (B) a;
+		//B b = a; Why did I Comment this line? It was due to: Compiler error at Line 10: Type mismatch: cannot convert from A to B
+		B b = (B) a; // Added this by casting a to Type B.
 		String s = "override";
 		b.doSomething(s);
 		
 		}
 }
 
-
-//Why line 10 was Commented? Compiler error at Line 10: Type mismatch: cannot convert from A to B
-// Added Line 11 by casting a to Type B.
 
 Console:
 Child impl:override
