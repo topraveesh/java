@@ -15,7 +15,9 @@ public class Test1 {
 }
 
 
-No Compiler Error.
+//This program doesn't give any Compiler Error
+
+//See what happens during Runtime
 
 Yes! Runtime Error!
 
