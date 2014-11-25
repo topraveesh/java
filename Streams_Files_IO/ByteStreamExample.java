@@ -10,8 +10,7 @@ public class Test {
             // Use this for reading the data.
             byte[] buffer = new byte[1000];
 
-            FileInputStream inputStream = 
-                new FileInputStream(fileName);
+            FileInputStream inputStream = new FileInputStream(fileName);
 
             // read fills buffer with data and returns
             // the number of bytes read (which of course
@@ -33,14 +32,10 @@ public class Test {
             System.out.println("Read " + total + " bytes");
         }
         catch(FileNotFoundException ex) {
-            System.out.println(
-                "Unable to open file '" + 
-                fileName + "'");				
+            System.out.println("Unable to open file '" + fileName + "'");				
         }
         catch(IOException ex) {
-            System.out.println(
-                "Error reading file '" 
-                + fileName + "'");					
+            System.out.println("Error reading file '" + fileName + "'");					
             // Or we could just do this: 
             // ex.printStackTrace();
         }
