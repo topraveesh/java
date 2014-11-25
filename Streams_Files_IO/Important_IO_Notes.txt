@@ -1,0 +1,32 @@
+The java.io package contains nearly every class you might ever need to perform input and output (I/O) in Java. 
+All these streams represent an input source and an output destination. 
+The stream in the java.io package supports many data such as primitives, Object, localized characters, etc.
+
+A stream can be defined as a sequence of data. 
+The InputStream is used to read data from a source and the OutputStream is used for writing data to a destination.
+
+Basically there are 2 types of Streams: 
+    Byte Stream and 
+    Character Stream
+
+Java byte streams are used to perform input and output of 8-bit bytes. 
+Though there are many classes related to byte streams but the most frequently used classes are:
+    FileInputStream and 
+    FileOutputStream.
+
+ A byte stream access the file byte by byte. 
+ A byte stream is suitable for any kind of file, however not quite appropriate for text files. 
+ For example, if the file is using a unicode encoding and a character is represented with two bytes, 
+ the byte stream will treat these separately and you will need to do the conversion yourself.
+
+
+Java Byte streams are used to perform input and output of 8-bit bytes, 
+where as Java Character streams are used to perform input and output for 16-bit unicode. 
+Though there are many classes related to character streams but the most frequently used classes are , 
+    FileReader and 
+    FileWriter.
+
+Though internally FileReader uses FileInputStream and FileWriter uses FileOutputStream but here major difference is that 
+FileReader reads two bytes at a time and FileWriter writes two bytes at a time.
+A character stream will read a file character by character. 
+A character stream needs to be given the file's encoding in order to work properly.
