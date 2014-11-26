@@ -28,3 +28,18 @@ What do you understand by Dependency Injection?
     loosely coupled, extendable and maintainable. We can implement dependency injection pattern to move the 
     dependency resolution from compile-time to runtime.Some of the benefits of using Dependency Injection are: 
     Separation of Concerns, Boilerplate Code reduction, Configurable components and easy unit testing.
+
+How do we implement DI in Spring Framework?
+        We can use Spring XML based as well as Annotation based configuration to implement DI in spring applications.
+
+
+Name some of the important Spring Modules?
+    Some of the important Spring Framework modules are:
+        Spring Context – for dependency injection.
+        Spring AOP – for aspect oriented programming.
+        Spring DAO – for database operations using DAO pattern
+        Spring JDBC – for JDBC and DataSource support.
+        Spring ORM – for ORM tools support such as Hibernate
+        Spring Web Module – for creating web applications.
+        Spring MVC – Model-View-Controller implementation for creating web applications, web services etc.
+
