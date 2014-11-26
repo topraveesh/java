@@ -1,0 +1,30 @@
+Spring Framework is one of the most popular Java EE framework for web applications. 
+Dependency Injection and Aspect Oriented Programming are at the heart of Spring framework.
+
+What is Spring Framework?
+    Spring is one of the most widely used Java EE framework. 
+    Spring framework core concepts are “Dependency Injection” and “Aspect Oriented Programming”.
+    Spring framework can be used in normal java applications also to achieve loose coupling between 
+    different components by implementing dependency injection and we can perform cross cutting tasks 
+    such as logging and authentication using spring support for aspect oriented programming.
+
+What are some of the important features and advantages of Spring Framework?
+    Spring Framework is built on top of two design concepts – Dependency Injection and Aspect Oriented Programming.
+    Some of the features of spring framework are:
+      Lightweight and very little overhead of using framework for our development.
+      Dependency Injection or Inversion of Control to write components that are independent of each other, spring container takes care of wiring them together to achieve our work.
+      Spring IoC container manages Spring Bean life cycle and project specific configurations such as JNDI lookup.
+      Spring MVC framework can be used to create web applications as well as restful web services capable of returning XML as well as JSON response.
+      Support for transaction management, JDBC operations, File uploading, Exception Handling etc with very little configurations, either by using annotations or by spring bean configuration file.
+  Some of the advantages of using Spring Framework are:
+      Reducing direct dependencies between different components of the application, usually Spring IoC container is responsible for initializing resources or beans and inject them as dependencies.
+      Writing unit test cases are easy in Spring framework because our business logic doesn’t have direct dependencies with actual resource implementation classes. We can easily write a test configuration and inject our mock beans for testing purposes.
+      Reduces the amount of boiler-plate code, such as initializing objects, open/close resources. I like JdbcTemplate class a lot because it helps us in removing all the boiler-plate code that comes with JDBC programming.
+      Spring framework is divided into several modules, it helps us in keeping our application lightweight. For example, if we don’t need Spring transaction management features, we don’t need to add that dependency in our project.
+      Spring framework support most of the Java EE features and even much more. It’s always on top of the new technologies, for example there is a Spring project for Android to help us write better code for native android applications. This makes spring framework a complete package and we don’t need to look after different framework for different requirements.
+
+What do you understand by Dependency Injection?
+    Dependency Injection design pattern allows us to remove the hard-coded dependencies and make our application 
+    loosely coupled, extendable and maintainable. We can implement dependency injection pattern to move the 
+    dependency resolution from compile-time to runtime.Some of the benefits of using Dependency Injection are: 
+    Separation of Concerns, Boilerplate Code reduction, Configurable components and easy unit testing.
