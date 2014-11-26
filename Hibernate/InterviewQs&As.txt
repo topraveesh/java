@@ -1,0 +1,132 @@
+What is Hibernate Framework?
+    Object-relational mapping or ORM is the programming technique to map application domain model objects to the 
+    relational database tables. Hibernate is java based ORM tool that provides framework for mapping application 
+    domain objects to the relational database tables and vice versa.
+    Hibernate provides reference implementation of Java Persistence API, that makes it a great choice as ORM tool 
+    with benefits of loose coupling. We can use Hibernate persistence API for CRUD operations. Hibernate framework 
+    provide option to map plain old java objects to traditional database tables with the use of JPA annotations as well 
+    as XML based configuration.Similarly hibernate configurations are flexible and can be done from 
+    XML configuration file as well as programmatically.
+  
+  
+What is Java Persistence API (JPA)?
+    Java Persistence API (JPA) provides specification for managing the relational data in applications.
+  
+  
+What are the important benefits of using Hibernate Framework?
+    Hibernate eliminates all the boiler-plate code that comes with JDBC and takes care of managing resources, so we can focus on business logic.
+    Hibernate framework provides support for XML as well as JPA annotations, that makes our code implementation independent.
+    Hibernate provides a powerful query language (HQL) that is similar to SQL. However, HQL is fully object-oriented and understands concepts like inheritance, polymorphism and association.
+    Hibernate is an open source project from Red Hat Community and used worldwide. This makes it a better choice than others because learning curve is small and there are tons of online documentations and help is easily available in forums.
+    Hibernate is easy to integrate with other Java EE frameworks, it’s so popular that Spring Framework provides built-in support for integrating hibernate with Spring applications.
+    Hibernate supports lazy initialization using proxy objects and perform actual database queries only when it’s required.
+    Hibernate cache helps us in getting better performance.
+    For database vendor specific feature, hibernate is suitable because we can also execute native sql queries.
+
+What are the advantages of Hibernate over JDBC?
+    Hibernate removes a lot of boiler-plate code that comes with JDBC API, the code looks more cleaner and readable.
+    Hibernate supports inheritance, associations and collections. These features are not present with JDBC API.
+    Hibernate implicitly provides transaction management, in fact most of the queries can’t be executed outside transaction. In JDBC API, we need to write code for transaction management using commit and rollback. Read more at JDBC Transaction Management.
+    JDBC API throws SQLException that is a checked exception, so we need to write a lot of try-catch block code. Most of the times it’s redundant in every JDBC call and used for transaction management. Hibernate wraps JDBC exceptions and throw JDBCException or HibernateException un-checked exception, so we don’t need to write code to handle it. Hibernate built-in transaction management removes the usage of try-catch blocks.
+    Hibernate Query Language (HQL) is more object oriented and close to java programming language. For JDBC, we need to write native sql queries.
+    Hibernate supports caching that is better for performance, JDBC queries are not cached hence performance is low.
+    Hibernate provide option through which we can create database tables too, for JDBC tables must exist in the database.
+    Hibernate configuration helps us in using JDBC like connection as well as JNDI DataSource for connection pool. This is very important feature in enterprise application and completely missing in JDBC API.
+    Hibernate supports JPA annotations, so code is independent of implementation and easily replaceable with other ORM tools. JDBC code is very tightly coupled with the application.
+
+Name some important interfaces of Hibernate framework?
+    SessionFactory (org.hibernate.SessionFactory): SessionFactory is an immutable thread-safe cache of compiled mappings for a single database. We need to initialize SessionFactory once and then we can cache and reuse it. SessionFactory instance is used to get the Session objects for database operations.
+    Session (org.hibernate.Session): Session is a single-threaded, short-lived object representing a conversation between the application and the persistent store. It wraps JDBC java.sql.Connection and works as a factory for org.hibernate.Transaction. We should open session only when it’s required and close it as soon as we are done using it. Session object is the interface between java application code and hibernate framework and provide methods for CRUD operations.
+    Transaction (org.hibernate.Transaction): Transaction is a single-threaded, short-lived object used by the application to specify atomic units of work. It abstracts the application from the underlying JDBC or JTA transaction. A org.hibernate.Session might span multiple org.hibernate.Transaction in some cases.
+
+What is hibernate configuration file?
+    Hibernate configuration file contains database specific configurations and used to initialize SessionFactory. 
+    We provide database credentials or JNDI resource information in the hibernate configuration xml file. 
+    Some other important parts of hibernate configuration file is Dialect information, 
+    so that hibernate knows the database type and mapping file or class details.
+
+What is hibernate mapping file?
+    Hibernate mapping file is used to define the entity bean fields and database table column mappings. 
+    We know that JPA annotations can be used for mapping but sometimes XML mapping file comes handy when we are 
+    using third party classes and we can’t use annotations. 
+  
+Name some important annotations used for Hibernate mapping?
+Hibernate supports JPA annotations and it has some other annotations in org.hibernate.annotations package. 
+Some of the important JPA and hibernate annotations used are:
+    
+    javax.persistence.Entity: Used with model classes to specify that they are entity beans.
+    javax.persistence.Table: Used with entity beans to define the corresponding table name in database.
+    javax.persistence.Access: Used to define the access type, either field or property. Default value is field and if you want hibernate to use getter/setter methods then you need to set it to property.
+    javax.persistence.Id: Used to define the primary key in the entity bean.
+    javax.persistence.EmbeddedId: Used to define composite primary key in the entity bean.
+    javax.persistence.Column: Used to define the column name in database table.
+    javax.persistence.GeneratedValue: Used to define the strategy to be used for generation of primary key. Used in conjunction with javax.persistence.GenerationType enum.
+    javax.persistence.OneToOne: Used to define the one-to-one mapping between two entity beans. We have other similar annotations as OneToMany, ManyToOne and ManyToMany
+    org.hibernate.annotations.Cascade: Used to define the cascading between two entity beans, used with mappings. It works in conjunction with org.hibernate.annotations.CascadeType
+    javax.persistence.PrimaryKeyJoinColumn: Used to define the property for foreign key. Used with org.hibernate.annotations.GenericGenerator and org.hibernate.annotations.Parameter
+
+What is Hibernate SessionFactory and how to configure it?
+    SessionFactory is the factory class used to get the Session objects. 
+    SessionFactory is responsible to read the hibernate configuration parameters and connect to the database 
+    and provide Session objects. Usually an application has a single SessionFactory instance and threads 
+    servicing client requests obtain Session instances from this factory.
+    The internal state of a SessionFactory is immutable. Once it is created this internal state is set. 
+    This internal state includes all of the metadata about Object/Relational Mapping.
+    SessionFactory also provide methods to get the Class metadata and Statistics instance to get the stats of 
+    query executions, second level cache details etc. 
+  
+
+What is Hibernate Session and how to get it?
+    Hibernate Session is the interface between java application layer and hibernate. 
+    This is the core interface used to perform database operations. 
+    Lifecycle of a session is bound by the beginning and end of a transaction.
+    Session provide methods to perform create, read, update and delete operations for a persistent object. 
+    We can execute HQL queries, SQL native queries and create criteria using Session object. 
+  
+What is difference between openSession and getCurrentSession?
+    Hibernate SessionFactory getCurrentSession() method returns the session bound to the context. 
+    But for this to work, we need to configure it in hibernate configuration file. 
+    Since this session object belongs to the hibernate context, we don’t need to close it. 
+    Once the session factory is closed, this session object gets closed.
+    <property name="hibernate.current_session_context_class">thread</property>
+    Hibernate SessionFactory openSession() method always opens a new session. 
+    We should close this session object once we are done with all the database operations. 
+    We should open a new session for each request in multi-threaded environment. 
+  
+What is difference between Hibernate Session get() and load() method?
+    Hibernate session comes with different methods to load data from database. 
+    get and load are most used methods, at first look they seems similar but there are some differences between them.
+    get() loads the data as soon as it’s called whereas load() returns a proxy object and loads data only when 
+    it’s actually required, so load() is better because it support lazy loading.
+    Since load() throws exception when data is not found, we should use it only when we know data exists.
+    We should use get() when we want to make sure data exists in the database.
+
+What is hibernate caching? Explain Hibernate first level cache?
+    As the name suggests, hibernate caches query data to make our application faster. 
+    Hibernate Cache can be very useful in gaining fast application performance if used correctly. 
+    The idea behind cache is to reduce the number of database queries, 
+    hence reducing the throughput time of the application.
+    Hibernate first level cache is associated with the Session object. 
+    Hibernate first level cache is enabled by default and there is no way to disable it. 
+    However hibernate provides methods through which we can delete selected objects from the cache 
+    or clear the cache completely.Any object cached in a session will not be visible to other sessions 
+    and when the session is closed, all the cached objects will also be lost.
+  
+What are different states of an entity bean?
+    Transient: When an object is never persisted or associated with any session, it’s in transient state. Transient instances may be made persistent by calling save(), persist() or saveOrUpdate(). Persistent instances may be made transient by calling delete().
+    Persistent: When an object is associated with a unique session, it’s in persistent state. Any instance returned by a get() or load() method is persistent.
+    Detached: When an object is previously persistent but not associated with any session, it’s in detached state. Detached instances may be made persistent by calling update(), saveOrUpdate(), lock() or replicate(). The state of a transient or detached instance may also be made persistent as a new persistent instance by calling merge().
+
+What is difference between Hibernate save(), saveOrUpdate() and persist() methods?
+    Hibernate save can be used to save entity to database. Problem with save() is that it can be invoked without a transaction and if we have mapping entities, then only the primary object gets saved causing data inconsistencies. Also save returns the generated id immediately.
+    Hibernate persist is similar to save with transaction. I feel it’s better than save because we can’t use it outside the boundary of transaction, so all the object mappings are preserved. Also persist doesn’t return the generated id immediately, so data persistence happens when needed.
+    Hibernate saveOrUpdate results into insert or update queries based on the provided data. If the data is present in the database, update query is executed. We can use saveOrUpdate() without transaction also, but again you will face the issues with mapped objects not getting saved if session is not flushed.
+  
+
+What will happen if we don’t have no-args constructor in Entity bean?
+    Hibernate uses Reflection API to create instance of Entity beans, usually when you call get() or load() methods. 
+    The method Class.newInstance() is used for this and it requires no-args constructor. 
+    So if you won’t have no-args constructor in entity beans, 
+    hibernate will fail to instantiate it and you will get HibernateException. 
+  
+  
