@@ -129,4 +129,108 @@ What will happen if we don’t have no-args constructor in Entity bean?
     So if you won’t have no-args constructor in entity beans, 
     hibernate will fail to instantiate it and you will get HibernateException. 
   
-  
+
+What is difference between sorted collection and ordered collection, which one is better?
+        When we use Collection API sorting algorithms to sort a collection, it’s called sorted list. 
+        For small collections, it’s not much of an overhead but for larger collections it can lead to slow performance 
+        and OutOfMemory errors. Also the entity beans should implement Comparable or Comparator interface for it to work, 
+        If we are using Hibernate framework to load collection data from database, 
+        we can use it’s Criteria API to use “order by” clause to get ordered list. 
+        Below code snippet shows you how to get it.
+            List<Employee> empList = session.createCriteria(Employee.class).addOrder(Order.desc("id")).list();
+        Ordered list is better than sorted list because the actual sorting is done at database level,
+        that is fast and doesn’t cause memory issues.   
+    
+
+What are the collection types in Hibernate?
+        There are five collection types in hibernate used for one-to-many relationship mappings.
+            Bag
+            Set
+            List
+            Array
+            Map
+
+How to implement Joins in Hibernate?
+        There are various ways to implement joins in hibernate.
+            Using associations such as one-to-one, one-to-many etc.
+            Using JOIN in the HQL query. There is another form “join fetch” to load associated data simultaneously, no lazy loading.
+            We can fire native sql query and use join keyword.
+
+Why we should not make Entity Class final?
+        Hibernate use proxy classes for lazy loading of data, only when it’s needed. 
+        This is done by extending the entity bean, if the entity bean will be final then lazy loading 
+        will not be possible, hence low performance. 
+
+What is HQL and what are it’s benefits?
+        Hibernate Framework comes with a powerful object-oriented query language – Hibernate Query Language (HQL). 
+        It’s very similar to SQL except that we use Objects instead of table names, 
+        that makes it more close to object oriented programming.
+        Hibernate query language is case-insensitive except for java class and variable names. 
+        So SeLeCT is the same as sELEct is the same as SELECT, but com.journaldev.model.
+        Employee is not same as com.journaldev.model.EMPLOYEE.
+        The HQL queries are cached but we should avoid it as much as possible, 
+        otherwise we will have to take care of associations. 
+        However it’s a better choice than native sql query because of Object-Oriented approach.
+
+What is Query Cache in Hibernate?
+        Hibernate implements a cache region for queries resultset that integrates closely with the hibernate second-level cache.
+        This is an optional feature and requires additional steps in code. 
+        This is only useful for queries that are run frequently with the same parameters.
+
+Difference between First Level and Second Level Caching in Hibernate?
+        1.1) First-level cache
+            First-level cache always Associates with the Session object. 
+            Hibernate uses this cache by default. Here, it processes one transaction after another one, 
+            means wont process one transaction many times. 
+            Mainly it reduces the number of SQL queries it needs to generate within a given transaction. 
+            That is instead of updating after every modification done in the transaction, 
+            it updates the transaction only at the end of the transaction.
+        1.2) Second-level cache
+            Second-level cache always associates with the Session Factory object. 
+            While running the transactions, in between it loads the objects at the Session Factory level,
+            so that those objects will be available to the entire application, not bound to single user. 
+            Since the objects are already loaded in the cache, whenever an object is returned by the query, 
+            at that time no need to go for a database transaction. 
+            In this way the second level cache works. Here we can use query level cache also. 
+
+Can we execute native sql query in hibernate?
+        Hibernate provide option to execute native SQL queries through the use of SQLQuery object.
+        For normal scenarios, it is however not the recommended approach because we loose benefits 
+        related to hibernate association and hibernate first level caching.
+    
+
+What is Named SQL Query?
+        Hibernate provides Named Query that we can define at a central location and use them anywhere in the code. 
+        We can created named queries for both HQL and Native SQL.
+        Hibernate Named Queries can be defined in Hibernate mapping files or through the use of JPA annotations 
+        @NamedQuery and @NamedNativeQuery. 
+
+
+How transaction management works in Hibernate?
+        Transaction management is very easy in hibernate because most of the operations are not permitted outside 
+        of a transaction. So after getting the session from SessionFactory, we can call session beginTransaction() 
+        to start the transaction. This method returns the Transaction reference that we can use later on to either 
+        commit or rollback the transaction.Overall hibernate transaction management is better than JDBC transaction 
+        management because we don’t need to rely on exceptions for rollback. 
+        Any exception thrown by session methods automatically rollback the transaction. 
+     
+What is cascading and what are different types of cascading?
+        When we have relationship between entities, then we need to define how the different operations will affect the 
+        other entity. This is done by cascading and there are different types of it.
+    
+
+What are best practices to follow with Hibernate framework?
+    Some of the best practices to follow in Hibernate are:
+        Always check the primary key field access, if it’s generated at the database layer then you should not have a setter for this.
+        By default hibernate set the field values directly, without using setters. So if you want hibernate to use setters, then make sure proper access is defined as @Access(value=AccessType.PROPERTY).
+        If access type is property, make sure annotations are used with getter methods and not setter methods. Avoid mixing of using annotations on both filed and getter methods.
+        Use native sql query only when it can’t be done using HQL, such as using database specific feature.
+        If you have to sort the collection, use ordered list rather than sorting it using Collection API.
+        Use named queries wisely, keep it at a single place for easy debugging. Use them for commonly used queries only. For entity specific query, you can keep them in the entity bean itself.
+        For web applications, always try to use JNDI DataSource rather than configuring to create connection in hibernate.
+        Avoid Many-to-Many relationships, it can be easily implemented using bidirectional One-to-Many and Many-to-One relationships.
+        For collections, try to use Lists, maps and sets. Avoid array because you don’t get benefit of lazy loading.
+        Do not treat exceptions as recoverable, roll back the Transaction and close the Session. If you do not do this, Hibernate cannot guarantee that in-memory state accurately represents the persistent state.
+        Prefer DAO pattern for exposing the different methods that can be used with entity bean
+        Prefer lazy fetching for associations
+
