@@ -10,4 +10,38 @@ CoreJava_Interview Qs & As
     JVM is responsible for converting byte code into machine readable code. 
     JVM is not platform independent, thats why you have different JVM for different operating systems. 
     We can customize JVM with Java Options, such as allocating minimum and maximum memory to JVM. 
-    It’s called virtual because it provides an interface that doesn’t depend on the underlying OS. 
+    It’s called virtual because it provides an interface that doesn’t depend on the underlying OS.
+    
+
+3)What is the difference between JDK and JVM?
+    Java Development Kit (JDK) is for development purpose and JVM is a part of it to execute the java programs.
+    JDK provides all the tools, executables and binaries required to compile, debug and execute a Java Program. 
+    The execution part is handled by JVM to provide machine independence. 
+    
+4)What is the difference between JVM and JRE?
+    Java Runtime Environment (JRE) is the implementation of JVM. 
+    JRE consists of JVM and java binaries and other classes to execute any program successfully. 
+    JRE doesn’t contain any development tools like java compiler, debugger etc. 
+    If you want to execute any java program, you should have JRE installed. 
+
+
+5)Which class is the superclass of all classes?
+    "java.lang.Object" is the root class for all the java classes and we don’t need to extend it. 
+    
+
+6)Why Java doesn’t support multiple inheritance?
+    Java doesn’t support multiple inheritance in classes because of “Diamond Problem”. 
+    However multiple inheritance is supported in interfaces. 
+    An interface can extend multiple interfaces because they just declare the methods 
+    and implementation will be present in the implementing class. 
+    So there is no issue of diamond problem with interfaces. 
+    
+
+7)Why Java is not pure Object Oriented language?
+    Java is not said to be pure object oriented because it support primitive types such as int, byte, short, long etc. 
+    It brings simplicity to the language while writing our code. 
+    Obviously java could have wrapper objects for the primitive types but just for the representation, 
+    they would not have provided any benefit.
+    As we know, for all the primitive types we have wrapper classes such as Integer, 
+    Long etc that provides some additional methods. 
+
