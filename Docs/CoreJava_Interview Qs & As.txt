@@ -1,0 +1,13 @@
+CoreJava_Interview Qs & As
+
+1)What do you mean by platform inWhat do you mean by platform independence of Java?
+    Platform independence means that you can run the same Java Program in any Operating System. 
+    For example, you can write java program in Windows and run it in Mac OS. 
+    
+
+2)What is JVM and is it platform independent?
+    Java Virtual Machine (JVM) is the heart of java programming language. 
+    JVM is responsible for converting byte code into machine readable code. 
+    JVM is not platform independent, thats why you have different JVM for different operating systems. 
+    We can customize JVM with Java Options, such as allocating minimum and maximum memory to JVM. 
+    It’s called virtual because it provides an interface that doesn’t depend on the underlying OS. 
