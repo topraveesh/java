@@ -1,0 +1,11 @@
+JAX-WS
+------------------------------------
+The Java API for XML Web Services (JAX-WS) is a Java programming language API for creating web services.
+It is part of the Java EE platform from Sun Microsystems.
+
+
+JDOM
+------------------------------------
+JDOM is an open source Java-based document object model for XML that was designed specifically for the Java platform 
+so that it can take advantage of its language features. 
+JDOM integrates with Document Object Model (DOM) and Simple API for XML (SAX), supports XPath and XSLT.
